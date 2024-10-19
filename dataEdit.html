@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Air Quality Database Interface</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Air Quality Database Interface</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html" data-name="Home">Home</a></li>
+            <li><a href="dataEdit.html" data-name="Data">Edit Data</a></li>
+            <li><a href="references.html" data-name="References">References</a></li>
+        </ul>
+    </nav>
+    <body>
+        <h3>Warning: Any Changes made are permanent</h3>
+        <p>Select one</p>
+        <section class="ChangeType">
+            <button id="insertToggle">Insert</button>
+            <button id="deleteToggle">Delete</button>
+        </section>
+        <section class="Insertion">
+            <div>
+                <label for="county">County:</label>
+                <input type="text" id="county" name="county"  placeholder="Alachua">
+                <label for="state">State:</label>
+                <input type="text" id="state" name="state"  placeholder="Florida">
+            </div>
+            <div>
+                <label for="date">Date:</label>
+                <input type="text" id="date" name="date"  placeholder="MM/DD/YYYY">
+                <label for="ozone">AQI:</label>
+                <input type="text" id="ozone" name="ozone"  placeholder="0.1">  
+                <button id="insert">Insert</button>
+            </div>
+        </section>
+        <section class="Deletion">
+            <div>
+                <label for="county">County:</label>
+                <input type="text" id="county" name="county"  placeholder="Alachua">
+                <label for="state">State:</label>
+                <input type="text" id="state" name="state"  placeholder="Florida">
+            </div>
+            <div>
+                <label for="date">Date:</label>
+                <input type="text" id="date" name="date"  placeholder="MM/DD/YYYY">
+                <label for="ozone">AQI:</label>
+                <input type="text" id="ozone" name="ozone"  placeholder="0.1">  
+                <button id="delete">Delete</button>
+            </div>
+        </section>
+
+</html>
