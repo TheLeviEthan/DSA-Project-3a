@@ -7,6 +7,7 @@
     font-family: 'JetBrains Mono', monospace;
 }
 
+/* NAVIGATION */
 header{
     position: fixed;
     top: 0;
@@ -16,7 +17,11 @@ header{
     display: flex;
     justify-content: space-between;
     background-color: #786F9E;
-    color: white;    
+    color: white;  
+}
+
+.logoContainer img{
+    width: 3em;
 }
 
 nav a{
@@ -32,6 +37,8 @@ nav a:hover{
     color: #FFA629;
 }
 
+/* MAIN */
+
 body{
     background-color: #413C58;
     color: white;
@@ -45,10 +52,68 @@ section{
     padding: 20px 100px;
 }
 
+.searchSection{
+    height: 10em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.searchSection h1{
+    margin: 0 20px;
+    padding: 0 20px;
+}
+
 .references {
     justify-content:left;
     align-items: center;
 }
+
+/* TextBox */
+.searchInput{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: #D5F0F0;
+    color:#413C58;
+    border-radius: 50em;
+    height: 2em;
+    width: 20em;
+    font-size: 1em;
+}
+
+
+/* BUTTONS */
+button{
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.searchSection button{
+    background-color: #96E078;
+}
+.searchSection button:hover{
+    background-color: #FFA629;
+}
+
+.ChangeType button{
+    background-color: #96E078;
+}
+.ChangeType button:hover{
+    background-color: #FFA629;
+}
+
+.ChangeType button:active{
+    background-color: transparent;
+    color: #96E078;
+    border: 2px dashed #96E078;
+
+}
+
 
 
 

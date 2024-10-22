@@ -9,7 +9,9 @@
 </head>
 <body>
     <header>
-        <h1>Air Quality Database Interface</h1>
+        <div class="logoContainer">
+            <img src="hash-browns.png" alt="Hashbrown Logo" class="logo">
+        </div>
         <nav>  
             <a href="index.html" data-name="Home">Home</a>
             <a href="dataEdit.html" data-name="Data">Edit Data</a>
@@ -17,12 +19,17 @@
         </nav>
     </header>
 
-    <main>
-        <h2>Search Local Air Quality by County</h2>
-            <form action="search.php" method="post">
-            <label for="county">County:</label>
-            <input type="text" id="county" name="county"  placeholder="Alachua">
-            <input type="submit" value="Search">
-    </main>
+    <section class="searchSection">
+        <div>
+            <h2>Search Local Air Quality by County</h2>    
+        <!-- <form action="search.php" method="post"> -->
+            <input type="text" id="county" name="county"  placeholder="Alachua" class="searchInput"></input>
+        </div>
+        <div>
+            <button id="search">Search</button>
+        </div>            
+        
 
+    </section>
+</body>
 </html>
