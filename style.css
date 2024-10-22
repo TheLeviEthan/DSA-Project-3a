@@ -69,18 +69,20 @@ section{
 }
 
 /* TextBox */
-.searchInput{
+input[type="text"]{
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 3em;
+    width: 20em;
+    font-size: 1em;
+    padding: 20px;
+    border-radius: 1em;
     border: none;
     background-color: #D5F0F0;
     color:#413C58;
-    border-radius: 50em;
-    height: 2em;
-    width: 20em;
-    font-size: 1em;
 }
+
 
 
 /* BUTTONS */
@@ -88,9 +90,10 @@ button{
     padding: 10px 20px;
     margin: 10px;
     border: none;
-    border-radius: 50px;
+    border-radius: 1em;
     cursor: pointer;
     transition: 0.3s;
+    font-weight: bold;
 }
 
 .searchSection button{
