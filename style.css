@@ -25,11 +25,10 @@ header{
 }
 
 nav a{
-    color: white;
-    text-decoration: none;
     margin: 0 10px;
     padding: 5px 10px;
-    border-radius: 5px;
+    color: white;
+    text-decoration: none;
     transition: 0.3s;
 }
 
@@ -47,6 +46,7 @@ body{
 
 }
 
+
 section{
     width: 100%;
     padding: 20px 100px;
@@ -63,6 +63,32 @@ section{
     padding: 0 20px;
 }
 
+/*Edit Data Page*/
+.ChangeType{
+    padding: 1em 40px 2em;
+}
+/*Insert Section*/
+.Insertion{
+    display: flex;
+    justify-content: center;
+    padding: 0 20px 0;
+}
+.Insertion label{
+    margin: 25px 20px 0px;
+    padding: 5px 10px;
+}
+/*Delete Section*/
+.Deletion{
+    display: flex;
+    justify-content: center;
+    padding: 0 20px 0;
+}
+.Deletion label{
+    margin: 25px 20px 0px;
+    padding: 5px 10px;
+}
+
+/*Reference Page*/
 .references {
     justify-content:left;
     align-items: center;
@@ -85,7 +111,8 @@ input[type="text"]{
     height: 3em;
     width: 20em;
     font-size: 1em;
-    padding: 20px;
+    margin: 10px 20px 25px;
+    padding: 0 20px;
     border-radius: 1em;
     border: none;
     background-color: #D5F0F0;
@@ -122,19 +149,24 @@ button{
     border: 2px dashed #F24822;
 }
 
-
 .insertToggle:active{
     background-color: transparent;
     color: #96E078;
     border: 2px dashed #96E078;
 }
 
+.Insertion button{
+    margin: 10px 20px 25px;
+}
 .Deletion button{
+    margin: 10px 20px 25px;
     background-color: #F24822;
     color: white;
-
 }
 
+.Deletion button:hover{
+    background-color: #FFA629;
+}
 
 
 

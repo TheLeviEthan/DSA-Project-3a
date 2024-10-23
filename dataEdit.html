@@ -11,7 +11,8 @@
     <header>
         <div class="logoContainer">
             <img src="hash-browns.png" alt="Hashbrown Logo" class="logo">
-        </div>        <nav>  
+        </div>        
+        <nav> 
             <a href="index.html" data-name="Home">Home</a>
             <a href="dataEdit.html" data-name="Data">Edit Data</a>
             <a href="references.html" data-name="References">References</a>
@@ -19,9 +20,9 @@
     </header>
 </body>
 <main>
-        <h3>Warning: Any Changes made are permanent</h3>
-        <p>Select one</p>
         <section class="ChangeType">
+            <h3>Warning: Any Changes made are permanent</h3>
+            <p>Select one</p>
             <button type= "button" id="insertToggle" class="insertToggle">Insert</button>
             <button type= "button" id="deleteToggle" class="deleteToggle">Delete</button>
         </section>
@@ -31,14 +32,15 @@
                 <input type="text" id="county" name="county"  placeholder="Alachua">
                 <label for="state">State:</label>
                 <input type="text" id="state" name="state"  placeholder="Florida">
+                <button type= "submit" id="insert">Insert</button>
             </div>
             <div>
                 <label for="date">Date:</label>
                 <input type="text" id="date" name="date"  placeholder="MM/DD/YYYY">
                 <label for="ozone">AQI:</label>
                 <input type="text" id="ozone" name="ozone"  placeholder="0.1">  
-                <button type= "submit" id="insert">Insert</button>
             </div>
+            
         </section>
         <section class="Deletion">
             <div>
@@ -46,15 +48,15 @@
                 <input type="text" id="county" name="county"  placeholder="Alachua">
                 <label for="state">State:</label>
                 <input type="text" id="state" name="state"  placeholder="Florida">
+                <button type= "submit" id="delete">Delete</button>
             </div>
             <div>
                 <label for="date">Date:</label>
                 <input type="text" id="date" name="date"  placeholder="MM/DD/YYYY">
                 <label for="ozone">AQI:</label>
                 <input type="text" id="ozone" name="ozone"  placeholder="0.1">  
-                <button type= "submit" id="delete">Delete</button>
+                
             </div>
         </section>
     </main>
-
 </html>
