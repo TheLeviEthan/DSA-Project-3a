@@ -7,13 +7,17 @@
     font-family: 'JetBrains Mono', monospace;
 }
 
+.hidden{
+    display: none;
+}
+
 /* NAVIGATION */
 header{
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 20px 100px;
+    padding: 10px 100px;
     display: flex;
     justify-content: space-between;
     background-color: #786F9E;
@@ -23,7 +27,9 @@ header{
 .logoContainer img{
     width: 3em;
 }
-
+nav{
+    padding: 1em 0px;
+}
 nav a{
     margin: 0 10px;
     padding: 5px 10px;
@@ -37,7 +43,6 @@ nav a:hover{
 }
 
 /* MAIN */
-
 body{
     background-color: #413C58;
     color: white;
@@ -46,49 +51,44 @@ body{
 
 }
 
-
 section{
     width: 100%;
     padding: 20px 100px;
 }
-
+/*=====> HOME PAGE <======*/
 .searchSection{
     height: 10em;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.searchSection h1{
-    margin: 0 20px;
-    padding: 0 20px;
+.searchSection h2{
+    margin: 0 20px 20px;
+}
+.searchSection p{
+    margin: 0 30px 10px;
+}
+.searchSection button{
+    margin: 4em 0 0;
 }
 
-/*Edit Data Page*/
+/*=====> EDIT DATA PAGE <======*/
 .ChangeType{
     padding: 1em 40px 2em;
 }
-/*Insert Section*/
-.Insertion{
+.dataInputSection{
     display: flex;
     justify-content: center;
     padding: 0 20px 0;
 }
-.Insertion label{
-    margin: 25px 20px 0px;
-    padding: 5px 10px;
-}
-/*Delete Section*/
-.Deletion{
-    display: flex;
-    justify-content: center;
-    padding: 0 20px 0;
-}
-.Deletion label{
+.dataInputSection label{
     margin: 25px 20px 0px;
     padding: 5px 10px;
 }
 
-/*Reference Page*/
+
+
+/*=====> REFERENCE PAGE <======*/
 .references {
     justify-content:left;
     align-items: center;
@@ -120,12 +120,11 @@ input[type="text"]{
 }
 
 
-
 /* BUTTONS */
 button{
     padding: 10px 20px;
     margin: 10px;
-    border: none;
+    border: 2px dashed transparent;
     border-radius: 1em;
     height: 3.5em;
     cursor: pointer;
@@ -140,32 +139,28 @@ button{
 
 .deleteToggle{
     background-color: #F24822;
-    color: white;
+    color: white; 
 }
 
-.deleteToggle:active{
+.deleteToggle.active{
     background-color: transparent;
     color:#F24822;
     border: 2px dashed #F24822;
 }
 
-.insertToggle:active{
+.insertToggle.active{
     background-color: transparent;
     color: #96E078;
     border: 2px dashed #96E078;
 }
 
-.Insertion button{
+.dataInputSection button{
     margin: 10px 20px 25px;
 }
-.Deletion button{
+.DeleteButton{
     margin: 10px 20px 25px;
     background-color: #F24822;
     color: white;
-}
-
-.Deletion button:hover{
-    background-color: #FFA629;
 }
 
 
