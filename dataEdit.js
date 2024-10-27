@@ -2,6 +2,17 @@
 //React MUI
 //API QUESTIOn Discord
 
+// import * as React from 'react';
+// import Box from '@mui/material/Box';
+// import Alert from '@mui/material/Alert';
+// import IconButton from '@mui/material/IconButton';
+// import Collapse from '@mui/material/Collapse';
+// import Button from '@mui/material/Button';
+// import CloseIcon from '@mui/icons-material/Close';
+
+
+
+
 document.addEventListener('DOMContentLoaded',()=>{ 
     //buttons and sections
     const toggleInsert = document.getElementById('insertToggle');
@@ -10,6 +21,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     const deleteButton = document.getElementById('delete');
     const inputSect = document.getElementById('inputSection');
     
+
     //Debug
     console.log(toggleInsert, toggleDelete);
 
