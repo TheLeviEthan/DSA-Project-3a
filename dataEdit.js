@@ -12,7 +12,6 @@
 
 
 
-
 document.addEventListener('DOMContentLoaded',()=>{ 
     //buttons and sections
     const toggleInsert = document.getElementById('insertToggle');
@@ -36,6 +35,11 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
 
     //Event
+    // if (!toggleInsert || !toggleDelete || !insertButton || !deleteButton || !inputSect) {
+    //     console.error('One or more elements are missing');
+    //     return;
+    // }
+    
     toggleInsert.addEventListener('click',()=>{
         changeEdit(toggleInsert, toggleDelete, insertButton, deleteButton);
         inputSect.classList.add('dataInputSection');
@@ -46,3 +50,4 @@ document.addEventListener('DOMContentLoaded',()=>{
     });
 
 });
+
