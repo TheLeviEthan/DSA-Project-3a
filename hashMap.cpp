@@ -2,7 +2,6 @@
 // Created by rudde on 11/25/2024.
 //
 
-
 #include <hashMap.H>
 using namespace std;
 
@@ -18,33 +17,19 @@ void HashMap::updateTableSize() {
 
 int HashMap::hashFunction(point dataPoint, int tableSize) {
     //integers to contain int representations
-    int countyInt;
-    int stateInt;
-    int dateInt;
-
-    //strings to concatenate int representations
-    string countyIntStr;
-    string stateIntStr;
-    string dateIntStr;
+    int hashVal;
 
     //determine int values for each variable in data point
     for(char i : dataPoint.county){
-        stateInt += (int)i;
+        hashVal += (int)i;
     }
     for(char i : dataPoint.state){
-        stateInt += (int)i;
+        hashVal += (int)i;
     }
     for(char i : dataPoint.date){
-        stateInt += (int)i;
+        hashVal += (int)i;
     }
 
-    //convert calculated integers to individual strings
-    countyIntStr = to_string(countyIntStr);
-    stateIntStr = to_string(stateIntStr);
-    dateIntStr = to_string(dateIntStr);
-
-    //concatenate strings, convert to int, mod table size, return
-    return (stoi(countyIntStr + stateIntStr + dateIntStr) % tableSize);
 }
 
 point HashMap::findHelper(dataPoint){
@@ -53,19 +38,19 @@ point HashMap::findHelper(dataPoint){
 
     //base case: data point is the first or only val at key
     if(hashMap[hashVal] == dataPoint){
-        return true;
+        return dataPoint;
     }
 
     //iterates through linked list at key
     while(currPoint->next != nullptr){
         currPoint = currPoint->next;
         if(currPoint.county == dataPoint.count && currPoint.state == dataPoint.state && currPoint.data == dataPoint.date){
-            return true;
+            return dataPoint;
         }
     }
 
     //data point is not in the map
-    return false;
+    return nullptr;
 }
 
 //insertion function utilizing hash function
@@ -77,11 +62,35 @@ bool HashMap::insert(string county, string state, string date, int aqi) {
     int hashVal = hashFunction(dataPoint, tableSize);
 
     //check if map already contains same data point exactly
-    if(!findHelper(dataPoint)){
-        //if not, insert it at FRONT of linked list
-        dataPoint->next = hashMap[hashVal];
-        hashMap[hashVal] = dataPoint;
+    if(findHelper(dataPoint)){
+       return false;
     }
+
+    //if not, insert it at FRONT of linked list
+    if(hashMap.find(hashVal) != hashMap.end()){
+        dataPoint->next = hashMap[hashVal];
+    } else {
+        dataPoint->next = nullptr;
+    }
+    hashMap[hashVal] = dataPoint;
+    return true;
 }
 
+bool HashMap::remove(string county, string state, string date{
+    //determine hash val of input
+    hashVal = hashFunction(county, state, date);
+    point dataPoint;
 
+    //determine if the hash map does not contain the hash val
+    if(hashMap.find(hashVal) == hashMap.end()){
+        return false;
+    } else {
+        dataPoint = hashMap[hashVal];
+        //if the hash map DOES contain the hash value, check the actual county, state, date
+        if(hashMap[hashVal].county == county && hashMap[hashVal].state == state && hashMap[hashVal].date == date){
+            hashMap.erase(hashVal);
+        } else {
+            dataPoint = dataPoint->next;
+        }
+    }
+}
