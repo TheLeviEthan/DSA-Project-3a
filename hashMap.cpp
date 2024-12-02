@@ -29,7 +29,6 @@ int HashMap::hashFunction(point dataPoint, int tableSize) {
     for(char i : dataPoint.date){
         hashVal += (int)i;
     }
-
 }
 
 point HashMap::findHelper(dataPoint){

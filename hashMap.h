@@ -7,8 +7,9 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <unordered_map>
 #pragma once
-using namespace std:
+using namespace std;
 
 class HashMap{
 private:
@@ -41,7 +42,7 @@ private:
     int hashFunction(point dataPoint, int tableSize);
 
     //given a key, iterate through linked list to see if point is present
-    point findHelper(dataPoint);
+    point findHelper(point dataPoint);
 
 
 public:
