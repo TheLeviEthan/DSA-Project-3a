@@ -8,11 +8,12 @@
     font-family: 'JetBrains Mono', monospace;
 }
 
+/*Attribute that hides section*/
 .hidden{
     display: none;
 }
 
-/* NAVIGATION */
+/* NAVIGATION BAR */
 header{
     position: fixed;
     top: 0;
@@ -43,7 +44,7 @@ nav a:hover{
     color: #FFA629;
 }
 
-/* MAIN */
+/* MAIN STYLE*/
 body{
     background-color: #413C58;
     color: white;
@@ -74,8 +75,6 @@ section{
 .searchInput input{
    width: 100%;
 }
-/*git streak 1*/
-
 
 /*=====> EDIT DATA PAGE <======*/
 .editSection{
