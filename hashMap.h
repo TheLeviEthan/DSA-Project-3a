@@ -1,57 +1,50 @@
-/* Author: Ethan Ruddell
- * Last Edited: 11/25/24
- *
- *
- */
-
-#include <iostream>
-#include <vector>
-#include <map>
-#include <unordered_map>
+#ifndef HASHMAP_H
+#define HASHMAP_H
 #pragma once
+#include <string>
+#include <unordered_map>
+
 using namespace std;
 
-class HashMap{
+class HashMap {
 private:
-    //struct to represent data points containing all information
-    struct point{
-        string county;
-        string state;
-        string date;
+    struct Point {
+        //data contained in each data point
+        std::string county;
+        std::string state;
+        std::string date;
         int aqi;
-        point* next;
-        point(string county, string state, string date, int aqi){
-            this->county = county;
-            this->state = state;
-            this->date = date;
-            this->aqi = aqi;
-            this->next = nullptr;
-        }
+        Point* next; //next data point for linked list
+
+        //constructor
+        Point(string county,  string state, string date, int aqi)
+                : county(county), state(state), date(date), aqi(aqi), next(nullptr) {}
     };
 
-    //utilizing an unordered map to store a hashed string key and the int value for the AQI
-    unordered_map<int, point> hashMap;
-    int tableSize;
-    double loadFactor;
-    const double loadThreshold = 0.5;
+    //data required for hash map
+    Point** table; //pointer to the hash table
+    int maxSize; //current size of the table
+    int currSize; //number of elements in the hash table,
+    const double loadFactorThreshold = 0.5;
 
-    //helper function to update the load factor
-    void updateTableSize();
+    //hash function
+    int hashFunction(string county,  string state, string date);
 
-    //conversion of the state, county, and date to a hashed int
-    int hashFunction(point dataPoint, int tableSize);
-
-    //given a key, iterate through linked list to see if point is present
-    point findHelper(point dataPoint);
-
+    //rehash and resize function
+    void rehash();
 
 public:
-    //constructors
-    HashMap(){
-        this->tableSize = 5;
-    }
+    //constructor w/ default initial size
+    HashMap(int initialSize = 5);
 
+    //destructor
+    ~HashMap();
+
+    //functions
     bool insert(string county, string state, string date, int aqi);
     bool remove(string county, string state, string date);
     int search(string county, string state, string date);
+    void printGraph();
 };
+
+#endif

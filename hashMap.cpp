@@ -1,95 +1,127 @@
-//
-// Created by rudde on 11/25/2024.
-//
+#include "hashMap.h"
+#include <iostream>
+#include <stdexcept>
 
-#include <hashMap.H>
 using namespace std;
 
-void HashMap::updateTableSize() {
-    //determine new load factor based off current and set table size
-    loadFactor = (double)hashMap.size() / (double)tableSize;
-
-    //check load factor against threshold for map resizing
-    if(loadFactor >= loadThreshold){
-        tableSize *= 2;
+HashMap::HashMap(int initialSize) //constructor, initial size and currSize set to 0
+{
+    maxSize = initialSize;
+    table = new Point*[maxSize];
+    for (int i = 0; i < maxSize; ++i) {
+        table[i] = nullptr;
     }
 }
 
-int HashMap::hashFunction(point dataPoint, int tableSize) {
-    //integers to contain int representations
-    int hashVal;
-
-    //determine int values for each variable in data point
-    for(char i : dataPoint.county){
-        hashVal += (int)i;
-    }
-    for(char i : dataPoint.state){
-        hashVal += (int)i;
-    }
-    for(char i : dataPoint.date){
-        hashVal += (int)i;
-    }
-}
-
-point HashMap::findHelper(dataPoint){
-    point currPoint = dataPoint;
-    int hashVal = hashFunction(dataPoint, tableSize);
-
-    //base case: data point is the first or only val at key
-    if(hashMap[hashVal] == dataPoint){
-        return dataPoint;
-    }
-
-    //iterates through linked list at key
-    while(currPoint->next != nullptr){
-        currPoint = currPoint->next;
-        if(currPoint.county == dataPoint.count && currPoint.state == dataPoint.state && currPoint.data == dataPoint.date){
-            return dataPoint;
+HashMap::~HashMap() { //destructor for entire map
+    for (int i = 0; i < maxSize; ++i) {
+        Point* current = table[i];
+        while (current) {
+            Point* toDelete = current;
+            current = current->next;
+            delete toDelete;
         }
     }
-
-    //data point is not in the map
-    return nullptr;
+    delete[] table;
 }
 
-//insertion function utilizing hash function
-bool HashMap::insert(string county, string state, string date, int aqi) {
-    //create new data point with all relevant data
-    point dataPoint = point(county, state, date, aqi);
+int HashMap::hashFunction(string county,  string state, string date)  {
+    int hashVal = 0;
+    //add int representation of each character in county, state, date
+    for (char c : county) hashVal += c;
+    for (char c : state) hashVal += c;
+    for (char c : date) hashVal += c;
+    return hashVal % maxSize;
+}
 
-    //determine hash value
-    int hashVal = hashFunction(dataPoint, tableSize);
+void HashMap::rehash() {
+    int oldSize = maxSize; //save old size to iterate rehash
+    maxSize *= 2; //double the current table size
+    Point** oldTable = table; //copy the old table into temporary var to get values
 
-    //check if map already contains same data point exactly
-    if(findHelper(dataPoint)){
-       return false;
+    table = new Point*[maxSize]; //create new table with new doubled size
+    for (int i = 0; i < maxSize; ++i) { //set each val in new table to null
+        table[i] = nullptr;
+    }
+    currSize = 0; //initialize size of new map
+
+    for (int i = 0; i < oldSize; ++i) {
+        Point* current = oldTable[i]; //current pointer tracks old values
+        while (current != nullptr) { //iterating through linked list at each key
+            insert(current->county, current->state, current->date, current->aqi);
+            Point* toDelete = current; //save pointer to delete to manage mem
+            current = current->next; //next item in linked list
+            delete toDelete; //delete old item
+        }
+    }
+    delete[] oldTable; //delete pointer to old table
+}
+
+bool HashMap::insert(string county,  string state, string date, int aqi) {
+    if ((double)(currSize) / (double)maxSize >= loadFactorThreshold) { //check size constraint
+        rehash(); //rehash and resize if current size too large
     }
 
-    //if not, insert it at FRONT of linked list
-    if(hashMap.find(hashVal) != hashMap.end()){
-        dataPoint->next = hashMap[hashVal];
-    } else {
-        dataPoint->next = nullptr;
+    int hashVal = hashFunction(county, state, date); //create hash val for new data
+    Point* current = table[hashVal]; //identify item at key = hashVal
+
+    while (current != nullptr) { //iterate through linked list if there is already val at key = hashVal
+        if (current->county == county && current->state == state && current->date == date) { //if already present
+            return false;
+        }
+        current = current->next; //next item in linked list
     }
-    hashMap[hashVal] = dataPoint;
+
+    Point* newPoint = new Point(county, state, date, aqi); //create new point
+    newPoint->next = table[hashVal]; //insert at front of linked list at key = hashVal
+    table[hashVal] = newPoint; //insert into hash table
+    ++currSize;
     return true;
 }
 
-bool HashMap::remove(string county, string state, string date{
-    //determine hash val of input
-    hashVal = hashFunction(county, state, date);
-    point dataPoint;
+bool HashMap::remove(string county, string state, string date) {
+    int hashVal = hashFunction(county, state, date); //determine hash val for given data
+    Point* current = table[hashVal]; //see what is at key = hashVal
+    Point* prev = nullptr; //previous pointer for deletion within linked list
 
-    //determine if the hash map does not contain the hash val
-    if(hashMap.find(hashVal) == hashMap.end()){
-        return false;
-    } else {
-        dataPoint = hashMap[hashVal];
-        //if the hash map DOES contain the hash value, check the actual county, state, date
-        if(hashMap[hashVal].county == county && hashMap[hashVal].state == state && hashMap[hashVal].date == date){
-            hashMap.erase(hashVal);
-        } else {
-            dataPoint = dataPoint->next;
+    while (current != nullptr) { //while there is something
+        if (current->county == county && current->state == state && current->date == date) { //if data point present
+            if (prev != nullptr) { //if you are in the middle of linked list
+                prev->next = current->next; //set prev's next value to current's next value
+            } else { //only item in the linked list
+                table[hashVal] = current->next; //set hashVal's value to null
+            }
+            delete current; //memory mnage
+            --currSize;
+            return true;
         }
+        prev = current; //iterate through linked list
+        current = current->next;
+    }
+    return false;
+}
+
+int HashMap::search(string county, string state, string date){
+    int hashVal = hashFunction(county, state, date); //determine hash val for given data
+    Point* current = table[hashVal]; //see what is at key = hashVal
+
+    while (current != nullptr) { //while there is something
+        if (current->county == county && current->state == state && current->date == date) { //if data point = given
+            return current->aqi; //return aqi for that data point
+        }
+        current = current->next; //iterate through linked list
+    }
+    return -1;
+}
+
+void HashMap::printGraph(){
+    for (int i = 0; i < maxSize; ++i) { //for every item in table
+        Point* current = table[i]; //current point = point at i
+        std::cout << "Bucket " << i << ": ";
+        while (current) {
+            std::cout << "[" << current->county << ", " << current->state << ", " << current->date << ", " << current->aqi << "] -> ";
+            current = current->next;
+        }
+        std::cout << "NULL\n";
     }
 }
