@@ -8,6 +8,8 @@
 #include <fstream>
 #include <sstream>
 #include "BTree.h"
+#include "Bridges.h"
+#include "LineChart.h"
 #include "hashMap.h"
 
 using namespace std;
@@ -17,7 +19,6 @@ int main(){
     ofstream ofs;
     ofs.open("test.txt", std::ofstream::out | std::ofstream::trunc);
     ofs.close();
-
 
     //create two data types for comparison
     HashMap map;

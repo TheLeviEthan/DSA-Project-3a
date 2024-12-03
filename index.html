@@ -3,36 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Air Quality Database Interface</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <header>
-        <div class="logoContainer">
-            <img src="hash-browns.png" alt="Hashbrown Logo" class="logo">
-        </div>
-        <nav>  
-            <a href="index.html" data-name="Home">Home</a>
-            <a href="dataEdit.html" data-name="Data">Edit Data</a>
-            <a href="references.html" data-name="References">References</a>
-        </nav>
-    </header>
+<header>
+    <div class="logoContainer">
+        <img src="hash-browns.png" alt="Hashbrown Logo" class="logo">
+    </div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="dataEdit.html">Edit Data</a>
+        <a href="references.html">References</a>
+    </nav>
+</header>
 
-    <section class="searchSection">
-        <div class="searchTitle">
-            <h2>Visualization of Air Quality over Time</h2> 
-            <p>Search by County</p>   
-        <!-- <form action="search.php" method="post"> -->    
-        </div>
-        <form class="searchInput">
-            <input type="text" id="state" name="state"  placeholder="Florida"></input>
-            <input type="text" id="county" name="county"  placeholder="Alachua"></input>
-            <input type="text" id="date" name="date"  placeholder="MM/DD/YYYY"></input>
-            <button type="submit" id="search">Search</button>                       
-        </form>            
-        
-
-    </section>
+<section class="searchSection">
+    <div class="searchTitle">
+        <h2>Visualization of Air Quality over Time</h2>
+        <p>Search by County</p>
+    </div>
+    <form class="searchInput">
+        <input type="text" id="state" name="state" placeholder="Florida">
+        <input type="text" id="county" name="county" placeholder="Alachua">
+        <input type="text" id="date" name="date" placeholder="MM/DD/YYYY">
+        <button type="submit" id="search">Search</button>
+    </form>
+    <div class="chart-container">
+        <canvas id="myChart" width="400" height="200"></canvas>
+    </div>
+</section>
 </body>
 </html>
