@@ -12,6 +12,13 @@ struct AQIData {
     string date; //YYYY-MM-DD format for parsing
     int aqi;
 
+    AQIData(string county, string state, string date, int aqi){
+        this->county = county;
+        this->state = state;
+        this->date = date;
+        this->aqi = aqi;
+    }
+
     // Comparison operator for sorting and searching
     bool operator<(const AQIData& other) const {
         return aqi < other.aqi;
@@ -54,8 +61,8 @@ private:
 public:
     BTree(int degree);
     ~BTree();
-    void insert(const AQIData& data);
-    bool search(const AQIData& data);
+    void insert(string county, string state, string date, int aqi);
+    bool search(string county, string state, string data);
     vector<AQIData> searchByCounty(const string& state, const string& county);
     void traverse();
 };

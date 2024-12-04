@@ -2,6 +2,7 @@
 #define HASHMAP_H
 #pragma once
 #include <string>
+#include <vector>
 #include <unordered_map>
 
 using namespace std;
@@ -44,6 +45,7 @@ public:
     bool insert(string county, string state, string date, int aqi);
     bool remove(string county, string state, string date);
     int search(string county, string state, string date);
+    vector<pair<string, int>> searchByCounty(string state, string county); //O(n)
     void printGraph();
 };
 

@@ -3,7 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['January', 'February', 'March', 'April', 'May'],
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
+                'November', 'December'],
             datasets: [{
                 label: 'Air Quality',
                 data: [10, 20, 30, 40, 50],
