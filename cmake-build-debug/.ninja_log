@@ -1,0 +1,5 @@
+# ninja log v5
+0	445	7549707996673884	CMakeFiles/Project3.dir/hashMap.cpp.obj	3ceaf1e0413247f5
+8	527	7549707997494742	CMakeFiles/Project3.dir/main.cpp.obj	8019a8947c893178
+4	630	7549707998520366	CMakeFiles/Project3.dir/BTree.cpp.obj	52086bbe32c7abb5
+630	770	7549707999900583	Project3.exe	ce79dd70dcc25ccb
