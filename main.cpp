@@ -41,6 +41,8 @@ using namespace std;
 //}
 
 int main(){
+
+
     //DEBUG: clear test file upon start
     ofstream ofs;
     ofs.open("test.txt", std::ofstream::out | std::ofstream::trunc);
@@ -79,7 +81,6 @@ int main(){
     }
     in.close();
     out.close();
-
 
     return 0;
 }

@@ -1,6 +1,7 @@
+/*Link to fonts*/
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
-
+/*Style attributes that are applied to all objects*/
 *{
     margin: 0;
     padding: 0;
@@ -25,10 +26,11 @@ header{
     background-color: #786F9E;
     color: white;  
 }
-
+/*Logo formating*/
 .logoContainer img{
     width: 3em;
 }
+/*Navigation links*/
 nav{
     padding: 1em 0px;
 }
