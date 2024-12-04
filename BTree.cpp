@@ -42,7 +42,7 @@ void BTree::splitChild(BTreeNode* parent, int index, BTreeNode* child) {
 
     // Move the second half of the keys to the new node
     newNode->keys.assign(child->keys.begin() + t, child->keys.end());
-    child->keys.resize(t - 1);
+//    child->keys.resize(t-1);
 
     // Move the second half of the children if not leaf
     if (!child->isLeaf) {

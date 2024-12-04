@@ -67,6 +67,7 @@ bool HashMap::insert(string county,  string state, string date, int aqi) {
 
     while (current != nullptr) { //iterate through linked list if there is already val at key = hashVal
         if (current->county == county && current->state == state && current->date == date) { //if already present
+            cout << "FAIL";
             return false;
         }
         current = current->next; //next item in linked list
@@ -76,6 +77,7 @@ bool HashMap::insert(string county,  string state, string date, int aqi) {
     newPoint->next = table[hashVal]; //insert at front of linked list at key = hashVal
     table[hashVal] = newPoint; //insert into hash table
     ++currSize;
+    cout << "SUCCESS";
     return true;
 }
 
@@ -125,7 +127,6 @@ void HashMap::printGraph(){
         std::cout << "NULL\n";
     }
 }
-
 
 vector<pair<string, int>> HashMap::searchByCounty(string state, string county){ //O(n)
     vector<pair<string, int>> returnVect;
