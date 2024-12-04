@@ -13,7 +13,7 @@
 
 using namespace std;
 
-int* getAquis(vector<pair<string, int>> inputs){
+int* getAQIs(vector<pair<string, int>> inputs){
     int returnArr[12]; //create an array of average AQIs for each month
     int monthAvg = 0;
     int monthTotal = 0;
