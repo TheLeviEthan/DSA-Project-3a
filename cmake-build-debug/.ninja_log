@@ -1,5 +1,12 @@
 # ninja log v5
-0	445	7549707996673884	CMakeFiles/Project3.dir/hashMap.cpp.obj	3ceaf1e0413247f5
-8	527	7549707997494742	CMakeFiles/Project3.dir/main.cpp.obj	8019a8947c893178
-4	630	7549707998520366	CMakeFiles/Project3.dir/BTree.cpp.obj	52086bbe32c7abb5
-630	770	7549707999900583	Project3.exe	ce79dd70dcc25ccb
+2	423	7550423780335570	CMakeFiles/Project3.dir/hashMap.cpp.obj	3ceaf1e0413247f5
+2	1310	7550434625203782	CMakeFiles/Project3.dir/main.cpp.obj	8019a8947c893178
+2	738	7550409348446057	CMakeFiles/Project3.dir/BTree.cpp.obj	52086bbe32c7abb5
+1310	1449	7550434626603825	Project3.exe	ce79dd70dcc25ccb
+0	197	7550435591956103	build.ninja	230d8bef8a8bcfb1
+25	696	7550435647341460	CMakeFiles/Project3.dir/hashMap.cpp.obj	3ceaf1e0413247f5
+11	717	7550435647551463	CMakeFiles/Project3.dir/BTree.cpp.obj	52086bbe32c7abb5
+0	1184	7550435652211576	CMakeFiles/Project3.dir/main.cpp.obj	8019a8947c893178
+1184	1318	7550435653551592	Project3.exe	ce79dd70dcc25ccb
+2	486	7550436295243327	CMakeFiles/Project3.dir/main.cpp.obj	8019a8947c893178
+487	618	7550436296523317	Project3.exe	ce79dd70dcc25ccb
