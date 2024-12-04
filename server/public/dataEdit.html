@@ -35,23 +35,27 @@
     <form id="inputSection" class="hidden">
         <div>
             <label for="county">County:</label>
-            <input type="text" id="county" name="county"  placeholder="Alachua">
+            <input type="text" id="county" name="county"  placeholder="Alachua" required>
             <label for="state">State:</label>
-            <input type="text" id="state" name="state"  placeholder="Florida">
+            <input type="text" id="state" name="state"  placeholder="Florida" required>
 
          </div>
         <div>
             <label for="date">Date:</label>
-            <input type="text" id="date" name="date"  placeholder="MM/DD/YYYY">
+            <input type="text" id="date" name="date"  placeholder="MM/DD/YYYY" pattern ="^(0[1-9]|1[0-2])/(0[1-9]|[12][0-9]|3[01])/\d{4}$" required>
             <label for="aqi">AQI:</label>
-            <input type="text" id="aqi" name="aqi"  placeholder="50">
+            <input type="number"  id="aqi" name="aqi"  placeholder="50" required>
         </div>
+        <!--Buttons for inserting data-->
         <div>
             <button type= "submit" id="insert" class="InsertButton">Insert</button>
             <button type= "submit" id="delete" class="DeleteButton">Delete</button>
         </div>
     </form>
 </section>
+    <section class="inputValidation">
+
+    </section>
     <script src="dataEdit.js"></script>
 </main>
 </html>

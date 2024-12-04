@@ -131,6 +131,20 @@ input[type="text"]{
     background-color: #D5F0F0;
     color:#413C58;
 }
+input[type="number"]{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3em;
+    width: 20em;
+    font-size: 1em;
+    margin: 20px 25px;
+    padding: 10px 20px;
+    border-radius: 1em;
+    border: none;
+    background-color: #D5F0F0;
+    color:#413C58;
+}
 
 /* BUTTONS */
 button{

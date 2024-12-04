@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--Visualizes Graph of AQI over time based on user Location-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,13 +26,13 @@
         <h2>Visualization of Air Quality over Time</h2>
         <p>Search by County</p>
     </div>
-    <!-- User Input to search for graph -->
+    <!--User Input to search for graph-->
     <form class="searchInput">
         <input type="text" id="state" name="state" placeholder="Florida">
         <input type="text" id="county" name="county" placeholder="Alachua">
         <button type="submit" id="search">Search</button>
     </form>
-    <!-- Graph Visualization -->
+    <!--Graph Visualization-->
     <div class="chart-container">
         <canvas id="myChart" width="400" height="200"></canvas>
     </div>

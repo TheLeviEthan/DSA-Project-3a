@@ -18,6 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
         toggle2.classList.remove('active');
         button1.classList.remove('hidden');
         button2.classList.add('hidden');
+        //clears values in input fields
+        document.getElementById("state").value = "";
+        document.getElementById("county").value = "";
+        document.getElementById("date").value = "";
+        document.getElementById("aqi").value = "";
+
     }
 
     // Events
