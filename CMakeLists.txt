@@ -3,4 +3,4 @@ project(Project3)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Project3 main.cpp BTree.cpp hashMap.cpp)
+add_executable(Project3 src/main.cpp src/BTree.cpp src/hashMap.cpp)

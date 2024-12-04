@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--Page where users can input/delete data from the database-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Air Quality Database Interface</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logoContainer">
+            <img src="../../hash-browns.png" alt="Hashbrown Logo" class="logo">
+        </div>
+        <!-- navigation bar      -->
+        <nav> 
+            <a href="index.html" data-name="Home">Home</a>
+            <a href="dataEdit.html" data-name="Data">Edit Data</a>
+            <a href="references.html" data-name="References">References</a>
+        </nav>
+    </header>
+</body>
+<main>
+    <section class="editSection">
+        <!--Toggle Button between Insert/Delete Data-->
+    <section class="ChangeType">
+        <h3>Warning: ALL changes made are permanent!</h3>
+        <p>Select one</p>
+        <button type= "button" id="insertToggle" class="insertToggle">Insert</button>
+        <button type= "button" id="deleteToggle" class="deleteToggle">Delete</button>
+
+    </section>
+        <!--Form for Inserting/Deleting Data-->
+    <form id="inputSection" class="hidden">
+        <div>
+            <label for="county">County:</label>
+            <input type="text" id="county" name="county"  placeholder="Alachua">
+            <label for="state">State:</label>
+            <input type="text" id="state" name="state"  placeholder="Florida">
+
+         </div>
+        <div>
+            <label for="date">Date:</label>
+            <input type="text" id="date" name="date"  placeholder="MM/DD/YYYY">
+            <label for="aqi">AQI:</label>
+            <input type="text" id="aqi" name="aqi"  placeholder="50">
+        </div>
+        <div>
+            <button type= "submit" id="insert" class="InsertButton">Insert</button>
+            <button type= "submit" id="delete" class="DeleteButton">Delete</button>
+        </div>
+    </form>
+</section>
+    <script src="dataEdit.js"></script>
+</main>
+</html>
