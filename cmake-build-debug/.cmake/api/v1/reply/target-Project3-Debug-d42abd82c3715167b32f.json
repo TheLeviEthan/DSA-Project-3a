@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "new_target.exe"
+			"path" : "Project3.exe"
 		},
 		{
-			"path" : "new_target.pdb"
+			"path" : "Project3.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -27,7 +27,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 4,
+				"line" : 6,
 				"parent" : 0
 			}
 		]
@@ -38,18 +38,27 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -fdiagnostics-color=always"
+					"fragment" : "-g -std=gnu++20 -fdiagnostics-color=always"
 				}
 			],
 			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "20"
+			},
 			"sourceIndexes" : 
 			[
 				0,
-				1
+				1,
+				2
 			]
 		}
 	],
-	"id" : "new_target::@6890427a1f51a3e7e1df",
+	"id" : "Project3::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -69,8 +78,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "new_target",
-	"nameOnDisk" : "new_target.exe",
+	"name" : "Project3",
+	"nameOnDisk" : "Project3.exe",
 	"paths" : 
 	{
 		"build" : ".",
@@ -83,7 +92,8 @@
 			"sourceIndexes" : 
 			[
 				0,
-				1
+				1,
+				2
 			]
 		}
 	],
@@ -92,13 +102,19 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "hashMap.cpp",
+			"path" : "main.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "BTree.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "hashMap.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

@@ -18,7 +18,8 @@ BTree::~BTree() {
 }
 
 // Insert data into B-tree
-void BTree::insert(const AQIData& data) {
+void BTree::insert(string county, string state, string date, int aqi) {
+    AQIData data = AQIData(county, state, date, aqi);
     if (!root) {
         // If tree is empty new root is created
         root = new BTreeNode(true);
@@ -77,7 +78,8 @@ void BTree::insertNonFull(BTreeNode* node, const AQIData& data) {
     }
 }
 
-bool BTree::search(const AQIData& data) {
+bool BTree::search(string county, string state, string date) {
+    AQIData data = AQIData(county, state, date, 0);
     BTreeNode* curr = root;
     while (curr) {
         int i = 0;

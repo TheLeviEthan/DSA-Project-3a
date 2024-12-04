@@ -125,3 +125,19 @@ void HashMap::printGraph(){
         std::cout << "NULL\n";
     }
 }
+
+
+vector<pair<string, int>> HashMap::searchByCounty(string state, string county){ //O(n)
+    vector<pair<string, int>> returnVect;
+    for (int i = 0; i < maxSize; ++i) { //for every item in table
+        Point* current = table[i]; //current point = point at i
+        while (current != nullptr) {
+            if(current->state == state && current->county == county){
+                returnVect.push_back(make_pair(current->date, current->aqi));
+            }
+            current = current->next;
+        }
+        std::cout << "NULL\n";
+    }
+}
+

@@ -41,43 +41,49 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = C$:/Users/rudde/OneDrive$ -$ University$ of$ Florida/DSA/DSA-Project-3a/cmake-build-debug/
 # =============================================================================
-# Object build statements for EXECUTABLE target new_target
+# Object build statements for EXECUTABLE target Project3
 
 
 #############################################
-# Order-only phony target for new_target
+# Order-only phony target for Project3
 
-build cmake_object_order_depends_target_new_target: phony || CMakeFiles/new_target.dir
+build cmake_object_order_depends_target_Project3: phony || CMakeFiles/Project3.dir
 
-build CMakeFiles/new_target.dir/hashMap.cpp.obj: CXX_COMPILER__new_target_unscanned_Debug C$:/Users/rudde/OneDrive$ -$ University$ of$ Florida/DSA/DSA-Project-3a/hashMap.cpp || cmake_object_order_depends_target_new_target
-  DEP_FILE = CMakeFiles\new_target.dir\hashMap.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\new_target.dir
-  OBJECT_FILE_DIR = CMakeFiles\new_target.dir
+build CMakeFiles/Project3.dir/main.cpp.obj: CXX_COMPILER__Project3_unscanned_Debug C$:/Users/rudde/OneDrive$ -$ University$ of$ Florida/DSA/DSA-Project-3a/main.cpp || cmake_object_order_depends_target_Project3
+  DEP_FILE = CMakeFiles\Project3.dir\main.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Project3.dir
+  OBJECT_FILE_DIR = CMakeFiles\Project3.dir
 
-build CMakeFiles/new_target.dir/BTree.cpp.obj: CXX_COMPILER__new_target_unscanned_Debug C$:/Users/rudde/OneDrive$ -$ University$ of$ Florida/DSA/DSA-Project-3a/BTree.cpp || cmake_object_order_depends_target_new_target
-  DEP_FILE = CMakeFiles\new_target.dir\BTree.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\new_target.dir
-  OBJECT_FILE_DIR = CMakeFiles\new_target.dir
+build CMakeFiles/Project3.dir/BTree.cpp.obj: CXX_COMPILER__Project3_unscanned_Debug C$:/Users/rudde/OneDrive$ -$ University$ of$ Florida/DSA/DSA-Project-3a/BTree.cpp || cmake_object_order_depends_target_Project3
+  DEP_FILE = CMakeFiles\Project3.dir\BTree.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Project3.dir
+  OBJECT_FILE_DIR = CMakeFiles\Project3.dir
+
+build CMakeFiles/Project3.dir/hashMap.cpp.obj: CXX_COMPILER__Project3_unscanned_Debug C$:/Users/rudde/OneDrive$ -$ University$ of$ Florida/DSA/DSA-Project-3a/hashMap.cpp || cmake_object_order_depends_target_Project3
+  DEP_FILE = CMakeFiles\Project3.dir\hashMap.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Project3.dir
+  OBJECT_FILE_DIR = CMakeFiles\Project3.dir
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target new_target
+# Link build statements for EXECUTABLE target Project3
 
 
 #############################################
-# Link the executable new_target.exe
+# Link the executable Project3.exe
 
-build new_target.exe: CXX_EXECUTABLE_LINKER__new_target_Debug CMakeFiles/new_target.dir/hashMap.cpp.obj CMakeFiles/new_target.dir/BTree.cpp.obj
+build Project3.exe: CXX_EXECUTABLE_LINKER__Project3_Debug CMakeFiles/Project3.dir/main.cpp.obj CMakeFiles/Project3.dir/BTree.cpp.obj CMakeFiles/Project3.dir/hashMap.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  OBJECT_DIR = CMakeFiles\new_target.dir
+  OBJECT_DIR = CMakeFiles\Project3.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_FILE = new_target.exe
-  TARGET_IMPLIB = libnew_target.dll.a
-  TARGET_PDB = new_target.exe.dbg
+  TARGET_FILE = Project3.exe
+  TARGET_IMPLIB = libProject3.dll.a
+  TARGET_PDB = Project3.exe.dbg
 
 
 #############################################
@@ -105,7 +111,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
-build new_target: phony new_target.exe
+build Project3: phony Project3.exe
 
 # =============================================================================
 # Folder targets.
@@ -115,12 +121,7 @@ build new_target: phony new_target.exe
 #############################################
 # Folder: C:/Users/rudde/OneDrive - University of Florida/DSA/DSA-Project-3a/cmake-build-debug
 
-build all: phony new_target.exe
-
-# =============================================================================
-# Unknown Build Time Dependencies.
-# Tell Ninja that they may appear as side effects of build rules
-# otherwise ordered by order-only dependencies.
+build all: phony Project3.exe
 
 # =============================================================================
 # Built-in targets
