@@ -1,5 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+<script src="hashMap.js"></script>
+<script>
+    // Load the WebAssembly module
+    createHashMapModule().then((Module) => {
+        // You can now use Module.ccall or Module.cwrap
+        const createHashMap = Module.cwrap("createHashMap", "number", ["number"]);
+        const insert = Module.cwrap("insert", "boolean", ["number", "string", "string", "string", "number"]);
+        const search = Module.cwrap("search", "number", ["number", "string", "string", "string"]);
+
+        // Example usage
+        const hashMap = createHashMap(10);
+        insert(hashMap, "Alachua", "Florida", "2024-12-04", 50);
+        const aqi = search(hashMap, "Alachua", "Florida", "2024-12-04");
+        console.log("AQI:", aqi);
+    });
+</script>
+
 <!--Visualizes Graph of AQI over time based on user Location-->
 <head>
     <meta charset="UTF-8">

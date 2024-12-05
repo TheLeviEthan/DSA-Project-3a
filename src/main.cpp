@@ -16,30 +16,42 @@ using json = nlohmann::json;
 
 using namespace std;
 
-void getAQIs(vector<pair<string, int>> inputs){
-    vector<int> returnVect; //create an array of average AQIs for each month
+void getAQIs(std::vector<std::pair<std::string, int>> inputs) {
+    std::vector<int> returnVect; // create an array of average AQIs for each month
     int monthAvg = 0;
     int monthTotal = 0;
     int monthsNum = 0;
-    ofstream jsonOut("chartData.json");
 
-    //for each month 1 through 12
-    for(int i = 1; i <= 12; i++){
-        for(int j = 0; j < inputs.size(); j++){ //for every item in the input remaining
-            if(stoi(inputs[j].first.substr(0,2)) == i){ //if the month val = the index
-                monthTotal += inputs[j].second; //add AQI to month total
-                monthsNum ++; //iterate number of AQIs in that month
-                inputs.erase(inputs.begin() + j); //remove pair from input
+    // for each month 1 through 12
+    for (int i = 1; i <= 12; i++) {
+        for (int j = 0; j < inputs.size(); j++) { // for every item in the input remaining
+            if (std::stoi(inputs[j].first.substr(0, 2)) == i) { // if the month value matches the index
+                monthTotal += inputs[j].second; // add AQI to month total
+                monthsNum++; // increment number of AQIs in that month
+                inputs.erase(inputs.begin() + j); // remove pair from input
             }
         }
-        monthAvg = monthTotal / monthsNum; //calculate average for that month
-        returnVect.push_back(monthAvg); //set month's index to its AQI average
+        monthAvg = monthTotal / monthsNum; // calculate average for that month
+        returnVect.push_back(monthAvg); // set month's index to its AQI average
     }
 
-    json j = returnVect;
-    jsonOut << j;
-    jsonOut.close();
+    // Specify the full path for the output file
+    std::string filePath = "server/public/chartData.json";
+
+    try {
+        std::ofstream jsonOut(filePath);
+        if (!jsonOut.is_open()) {
+            throw std::ios_base::failure("Failed to open the file for writing.");
+        }
+        nlohmann::json j = returnVect; // Convert the vector to JSON format
+        jsonOut << j;
+        jsonOut.close();
+        std::cout << "Data successfully written to: " << filePath << std::endl;
+    } catch (const std::exception& e) {
+        std::cerr << "Error writing to file: " << e.what() << std::endl;
+    }
 }
+
 
 int main(){
     //Data Structures
@@ -86,6 +98,7 @@ int main(){
     }
 
 
+
     //variables
     int op = -1;
     string userState;
@@ -125,6 +138,7 @@ int main(){
             cin>>userState;
             cout<<"Enter your county"<<endl;
             cin>>userCounty;
+
             getAQIs(map.searchByCounty(userState, userCounty));
 
         }
@@ -232,7 +246,6 @@ int main(){
     }
 
 
-    getAQIs(map.searchByCounty("Idaho", "Bannock"));
 
     in.close();
     out.close();

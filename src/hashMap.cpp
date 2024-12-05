@@ -2,6 +2,7 @@
 #include <iostream>
 #include <stdexcept>
 
+
 using namespace std;
 
 HashMap::HashMap(int initialSize) //constructor, initial size and currSize set to 0
@@ -115,6 +116,8 @@ int HashMap::search(string county, string state, string date){
     return -1;
 }
 
+
+
 void HashMap::printGraph(){
     for (int i = 0; i < maxSize; ++i) { //for every item in table
         Point* current = table[i]; //current point = point at i
@@ -141,4 +144,3 @@ vector<pair<string, int>> HashMap::searchByCounty(string state, string county){ 
 
     return returnVect;
 }
-
