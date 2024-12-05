@@ -36,7 +36,3 @@ document.addEventListener('DOMContentLoaded', () => {
         inputSect.classList.add('dataInputSection');
     });
 });
-
-const myObject = {name: "John", age: 20};
-
-const jsonString = JSON.stringify(myObject);
