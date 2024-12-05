@@ -19,18 +19,22 @@ struct AQIData {
         this->aqi = aqi;
     }
 
-    // Comparison operator for sorting and searching
     bool operator<(const AQIData& other) const {
-        return aqi < other.aqi;
+        if (state != other.state) return state < other.state;
+        if (county != other.county) return county < other.county;
+        return date < other.date; // Compare date as the next priority
     }
 
     bool operator>(const AQIData& other) const {
-        return aqi > other.aqi;
+        if (state != other.state) return state > other.state;
+        if (county != other.county) return county > other.county;
+        return date > other.date; // Compare date as the next priority
     }
 
     bool operator==(const AQIData& other) const {
-        return state == other.state && county == other.county && date == other.date && aqi == other.aqi;
+        return state == other.state && county == other.county && date == other.date;
     }
+
 };
 
 struct BTreeNode {
@@ -55,15 +59,23 @@ private:
     void deleteTree(BTreeNode* node);
     void insertNonFull(BTreeNode* node, const AQIData& data);
     void splitChild(BTreeNode* parent, int index, BTreeNode* child);
-    void searchByCountyHelper(BTreeNode* node, const string& state, const string& county, vector<AQIData>& results);
+    void searchByCountyHelper(BTreeNode* node, const std::string& state, const std::string& county, vector<pair<string, int>>& results);
     void traverseHelper(BTreeNode* node);
+    void deleteNodeHelper(BTreeNode* node, const AQIData& target);
+    void removeInternalNode(BTreeNode* node, int idx);
+    AQIData getPredecessor(BTreeNode* node, int idx);
+    AQIData getSuccessor(BTreeNode* node, int idx);
+    void fill(BTreeNode* parent, int idx);
+    void borrowFromPrev(BTreeNode* parent, int idx);
+    void borrowFromNext(BTreeNode* parent, int idx);
+    void merge(BTreeNode* parent, int idx);
 
 public:
     BTree(int degree);
     ~BTree();
     void insert(string county, string state, string date, int aqi);
-    bool search(string county, string state, string data);
-    vector<AQIData> searchByCounty(const string& state, const string& county);
+    int search(string county, string state, string date);
+    vector<pair<string, int>> searchByCounty(const string& state, const string& county);
     void traverse();
 };
 
