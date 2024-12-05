@@ -40,22 +40,23 @@ void BTree::insert(string county, string state, string date, int aqi) {
 void BTree::splitChild(BTreeNode* parent, int index, BTreeNode* child) {
     BTreeNode* newNode = new BTreeNode(child->isLeaf);
 
-    // Move the second half of the keys to the new node
-    newNode->keys.assign(child->keys.begin() + t, child->keys.end());
-//    child->keys.resize(t-1);
 
-    // Move the second half of the children if not leaf
+    newNode->keys.assign(child->keys.begin() + t, child->keys.end());
+
+
+    parent->keys.insert(parent->keys.begin() + index, child->keys[t - 1]);
+
+
+    child->keys.resize(t - 1);
+
     if (!child->isLeaf) {
         newNode->children.assign(child->children.begin() + t, child->children.end());
         child->children.resize(t);
     }
 
-    // Insert new node into parents child
     parent->children.insert(parent->children.begin() + index + 1, newNode);
-
-    // make middle key parent
-    parent->keys.insert(parent->keys.begin() + index, child->keys[t - 1]);
 }
+
 
 // Insert into non full node
 void BTree::insertNonFull(BTreeNode* node, const AQIData& data) {

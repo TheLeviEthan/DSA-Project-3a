@@ -11,7 +11,7 @@ struct AQIData {
     string county;
     string date; //YYYY-MM-DD format for parsing
     int aqi;
-
+    AQIData() : state(""), county(""), date(""), aqi(0) {}
     AQIData(string county, string state, string date, int aqi){
         this->county = county;
         this->state = state;
