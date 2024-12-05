@@ -42,8 +42,6 @@ void getAQIs(vector<pair<string, int>> inputs){
 }
 
 int main(){
-    /*
-     * >>>>>BACKUP CONSOLE USER INTERFACE<<<<
     //Data Structures
     HashMap hashMap;
     //variables
@@ -117,8 +115,7 @@ int main(){
     }
     cout<<"Program exited"<<endl;
     return 0;
-    */
-
+/*
     //DEBUG: clear test file upon start
     ofstream ofs;
     ofs.open("test.txt", std::ofstream::out | std::ofstream::trunc);
@@ -180,4 +177,5 @@ int main(){
     out.close();
 
     return 0;
+    */
 }
