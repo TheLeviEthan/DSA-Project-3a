@@ -42,6 +42,83 @@ void getAQIs(vector<pair<string, int>> inputs){
 }
 
 int main(){
+    /*
+     * >>>>>BACKUP CONSOLE USER INTERFACE<<<<
+    //Data Structures
+    HashMap hashMap;
+    //variables
+    int op = -1;
+    string state;
+    string county;
+    string date;
+    int aqi;
+    cout<<"Welcome, to learn more about AQI choose what you would to do"<<endl;
+    while(op != 5){
+        cout<<"----------------------------"<<endl;
+        cout<<"Operations: (enter a number)\n"<<
+            "1. Visual Local County AQI of 2023\n"<<
+            "2. Insert Data into Database\n"<<
+            "3. Delete Data into Database\n"<<
+            "4. References\n"<<
+            "5. Exit"<<endl;
+        cin >> op;
+        //Graph Visualization
+        if(op == 1){
+
+            cout<<"Enter your state"<<endl;
+            cin>>state;
+            cout<<"Enter your county"<<endl;
+            cin>>county;
+            cout<<"Enter your date"<<endl;
+            cin>>date;
+            cout<<"The AQI is "<<hashMap.search(state, county, date)<<endl;
+        }
+            //Insert Data
+        else if(op == 2){
+            cout<<"Warning: All changes are permanent"<<endl;
+            cout<<"Enter your state"<<endl;
+            cin>>state;
+            cout<<"Enter your county"<<endl;
+            cin>>county;
+            cout<<"Enter your Data (MM/DD/YYYY"<<endl;
+            cin>>date;
+            cout<<"Enter your AQI (integer)"<<endl;
+            cin>>aqi;
+            if(hashMap.insert(county, state, date, aqi)){
+                cout<<"Data Point Inserted!"<<endl;
+            }
+            else{cout<<"Insertion failed"<<endl;}
+        }
+            //Delete Data
+        else if(op == 3){
+            cout<<"Warning: All changes are permanent"<<endl;
+            cout<<"Enter your state"<<endl;
+            cin>>state;
+            cout<<"Enter your county"<<endl;
+            cin>>county;
+            cout<<"Enter your Data (MM/DD/YYYY"<<endl;
+            cin>>date;
+            cout<<"Enter your AQI (integer)"<<endl;
+            cin>>aqi;
+            if(hashMap.remove(county, state, date)){
+                cout<<"Data Point Deleted!"<<endl;
+            }
+            else{cout<<"Deletion failed"<<endl;}
+        }
+        else if(op == 4){
+            cout<<"References\n"<<
+                " - https://aqs.epa.gov/aqsweb/airdata/download_files.html\n"<<
+                " - https://medium.com/@mohanakrishnakavali/about-hashmap-and-common-use-cases-d3e5134438e1\n"<<
+                " - https://www.pingcap.com/article/understanding-b-tree-and-hash-indexing-in-databases/#:~:text=B%2DTree%20indexing%20is"<<
+                " - https://www.flaticon.com/free-icon/hash-browns_10773420?related_id=10773557&origin=search\n"<<
+                " - https://fonts.google.com/specimen/JetBrains+Mono\n"<<endl;
+        }
+
+    }
+    cout<<"Program exited"<<endl;
+    return 0;
+    */
+
     //DEBUG: clear test file upon start
     ofstream ofs;
     ofs.open("test.txt", std::ofstream::out | std::ofstream::trunc);
