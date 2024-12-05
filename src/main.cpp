@@ -175,7 +175,6 @@ int main(){
     cout<<"Program exited"<<endl;
 
     //>>>>>>>>HASH MAP IMPLEMENTATION<<<<<<<
-    cout<<endl;
     return 0;
 /*
     //DEBUG: clear test file upon start
