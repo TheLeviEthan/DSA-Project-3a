@@ -1,22 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <script src="hashMap.js"></script>
-<script>
-    // Load the WebAssembly module
-    createHashMapModule().then((Module) => {
-        // You can now use Module.ccall or Module.cwrap
-        const createHashMap = Module.cwrap("createHashMap", "number", ["number"]);
-        const insert = Module.cwrap("insert", "boolean", ["number", "string", "string", "string", "number"]);
-        const search = Module.cwrap("search", "number", ["number", "string", "string", "string"]);
-
-        // Example usage
-        const hashMap = createHashMap(10);
-        insert(hashMap, "Alachua", "Florida", "2024-12-04", 50);
-        const aqi = search(hashMap, "Alachua", "Florida", "2024-12-04");
-        console.log("AQI:", aqi);
-    });
-</script>
-
 <!--Visualizes Graph of AQI over time based on user Location-->
 <head>
     <meta charset="UTF-8">
@@ -42,14 +26,8 @@
 <section class="searchSection">
     <div class="searchTitle">
         <h2>Visualization of Air Quality over Time</h2>
-        <p>Search by County</p>
+        <p>By County</p>
     </div>
-    <!--User Input to search for graph-->
-    <form class="searchInput">
-        <input type="text" id="state" name="state" placeholder="Florida" required>
-        <input type="text" id="county" name="county" placeholder="Alachua" required>
-        <button type="submit" id="search">Search</button>
-    </form>
     <!--Graph Visualization-->
     <div class="chart-container">
         <canvas id="myChart" width="400" height="200"></canvas>
