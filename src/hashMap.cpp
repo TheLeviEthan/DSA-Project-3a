@@ -103,18 +103,24 @@ bool HashMap::remove(string county, string state, string date) {
     return false;
 }
 
-int HashMap::search(string county, string state, string date){
-    int hashVal = hashFunction(county, state, date); //determine hash val for given data
-    Point* current = table[hashVal]; //see what is at key = hashVal
+int HashMap::search(string county, string state, string date) {
+    int hashVal = hashFunction(county, state, date); // Determine hash value for given data
+    Point* current = table[hashVal]; // Retrieve the first point in the list at that hash table index
 
-    while (current != nullptr) { //while there is something
-        if (current->county == county && current->state == state && current->date == date) { //if data point = given
-            return current->aqi; //return aqi for that data point
+    while (current != nullptr) { // Traverse the linked list at this hash index
+        // Compare the county, state, and date with the current node
+        if (current->county == county && current->state == state && current->date == date) {
+            std::cout << "Found matching record: " << county << ", " << state << ", " << date << std::endl; // Debugging output
+            return current->aqi; // Return the AQI for the found record
         }
-        current = current->next; //iterate through linked list
+        current = current->next; // Move to the next node in the list
     }
+
+    // If no matching record was found, return -1 to indicate not found
+    std::cout << "No matching record found for: " << county << ", " << state << ", " << date << std::endl; // Debugging output
     return -1;
 }
+
 
 
 
