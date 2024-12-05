@@ -79,7 +79,7 @@ void BTree::insertNonFull(BTreeNode* node, const AQIData& data) {
     }
 }
 
-bool BTree::search(string county, string state, string date) {
+int BTree::search(string county, string state, string date) {
     AQIData data = AQIData(county, state, date, 0);
     BTreeNode* curr = root;
     while (curr) {
@@ -88,26 +88,26 @@ bool BTree::search(string county, string state, string date) {
             i++;
         }
         if (i < curr->keys.size() && data == curr->keys[i]) {
-            return true;
+            return curr->keys[i].aqi; // Return AQI if found
         }
-        if (curr->isLeaf) return false;
+        if (curr->isLeaf) return -1; // Return -1 if not found
         curr = curr->children[i];
     }
-    return false;
+    return -1;
 }
 
-std::vector<AQIData> BTree::searchByCounty(const std::string& state, const std::string& county) {
-    std::vector<AQIData> results;
+vector<pair<string, int>> BTree::searchByCounty(const std::string& state, const std::string& county) {
+    vector<pair<string, int>> results;
     searchByCountyHelper(root, state, county, results);
     return results;
 }
 
-void BTree::searchByCountyHelper(BTreeNode* node, const std::string& state, const std::string& county, std::vector<AQIData>& results) {
+void BTree::searchByCountyHelper(BTreeNode* node, const std::string& state, const std::string& county, vector<pair<string, int>>& results) {
     if (!node) return;
 
     for (const auto& key : node->keys) {
         if (key.state == state && key.county == county) {
-            results.push_back(key);
+            results.emplace_back(key.date, key.aqi);
         }
     }
 
