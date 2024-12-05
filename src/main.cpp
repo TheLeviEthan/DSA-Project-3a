@@ -44,6 +44,7 @@ void getAQIs(vector<pair<string, int>> inputs){
 int main(){
     //Data Structures
     HashMap map;
+    BTree tree(3);
     fstream in;
     fstream out;
 
@@ -83,6 +84,7 @@ int main(){
         out << state << "," << county << "," << date << "," << aqiString << endl;
 
         map.insert(county, state, date, stoi(aqiString));
+        tree.insert(county, state, date, stoi(aqiString));
     }
 
 
@@ -92,6 +94,7 @@ int main(){
     string userCounty;
     string userDate;
     int userAQI;
+    /*
     //>>>>>>>>HASH MAP IMPLEMENTATION<<<<<<<
     cout<<"Welcome, to learn more about Air Quality Index(AQI) choose what you would to do!"<<endl;
     while(op != 6){
@@ -173,8 +176,91 @@ int main(){
 
     }
     cout<<"Program exited"<<endl;
+*/
+    //>>>>>>>>B TREE IMPLEMENTATION<<<<<
+    cout<<"Welcome, to learn more about Air Quality Index(AQI) choose what you would to do!"<<endl;
+    while(op != 6){
+        cout<<"----------------------------"<<endl;
+        cout<<"Operations: (enter a number)\n"<<
+            "1. Search for local AQI based on Date\n"<<
+            "2. Graph Visualization local AQI"<<
+            "3. Insert Data into Database\n"<<
+            "4. Delete Data into Database\n"<<
+            "5. References\n"<<
+            "6. Exit"<<endl;
+        cin >> op;
+        //Graph Visualization
+        if(op == 1){
+            cout<<"Enter your state"<<endl;
+            cin>>userState;
+            cout<<"Enter your county"<<endl;
+            cin>>userCounty;
+            cout<<"Enter your date"<<endl;
+            cin>>userCounty;
+            int foundAQI = tree.search(userCounty, userState, userDate);
+            if(foundAQI==-1){
+                cout<<"Datapoint not found"<<endl;
+                continue;
+            }
+            cout<<"Local AQI is "<<foundAQI<<endl;
+        }
+            //AQI Visualization
+        else if(op == 2){
+            cout<<"Enter your state"<<endl;
+            cin>>userState;
+            cout<<"Enter your county"<<endl;
+            cin>>userCounty;
+            //getAQIs(tree.searchByCounty(userState, userCounty));
 
-    //>>>>>>>>HASH MAP IMPLEMENTATION<<<<<
+        }
+            //Insert Data
+        else if(op == 3){
+            cout<<"Warning: All changes are permanent"<<endl;
+            cout<<"Enter your state"<<endl;
+            cin>>userState;
+            cout<<"Enter your county"<<endl;
+            cin>>userCounty;
+            cout<<"Enter your Data (MM/DD/YYYY"<<endl;
+            cin>>userDate;
+            cout<<"date: "<<date<<endl;
+            cout<<"Enter your AQI (integer)"<<endl;
+            cin>>userAQI;
+            tree.insert(userCounty, userState, userDate, userAQI);
+            if(tree.search(userCounty, userState, userDate)){
+                cout<<"Data Point Inserted!"<<endl;
+            }
+            else{cout<<"Insertion failed"<<endl;}
+        }
+            //Delete Data
+        else if(op == 4){
+            cout<<"Warning: All changes are permanent"<<endl;
+            cout<<"Enter your state"<<endl;
+            cin>>userState;
+            cout<<"Enter your county"<<endl;
+            cin>>userCounty;
+            cout<<"Enter your Data (MM/DD/YYYY"<<endl;
+            cin>>userDate;
+            cout<<"Enter your AQI (integer)"<<endl;
+            cin>>userAQI;
+            if(tree.search(userCounty,userState,userDate)){
+
+                cout<<"Data Point Deleted!"<<endl;
+            }
+            else{cout<<"Deletion failed"<<endl;}
+        }
+            //Show References
+        else if(op == 5){
+            cout<<"References\n"<<
+                " - https://aqs.epa.gov/aqsweb/airdata/download_files.html\n"<<
+                " - https://medium.com/@mohanakrishnakavali/about-hashmap-and-common-use-cases-d3e5134438e1\n"<<
+                " - https://www.pingcap.com/article/understanding-b-tree-and-hash-indexing-in-databases/#:~:text=B%2DTree%20indexing%20is"<<
+                " - https://www.flaticon.com/free-icon/hash-browns_10773420?related_id=10773557&origin=search\n"<<
+                " - https://fonts.google.com/specimen/JetBrains+Mono\n"<<endl;
+        }
+
+    }
+    cout<<"Program exited"<<endl;
+
     return 0;
 /*
     //DEBUG: clear test file upon start
