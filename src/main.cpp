@@ -43,67 +43,126 @@ void getAQIs(vector<pair<string, int>> inputs){
 
 int main(){
     //Data Structures
-    HashMap hashMap;
+    HashMap map;
+    fstream in;
+    fstream out;
+
+    //opening files
+    in.open("daily_aqi_by_county_2023.csv", ios::in);
+    out.open("test.txt", ios::out | ios::app);
+
+    if (!in.is_open()) {
+        cerr << "Error: Could not open input file!" << endl;
+        return 1;
+    }
+    if (!out.is_open()) {
+        cerr << "Error: Could not open output file!" << endl;
+        return 1;
+    }
+
+    //strings from CSV read
+    string county, state, date, aqiString;
+    vector<string> row;
+    string line, word, temp;
+
+    getline(in, line);
+
+    while(getline(in, line)){
+        //DEBUG: write to test file
+        //out << line << endl;
+        row.clear();
+        stringstream s(line);
+        while(getline(s, word, ',')){
+            row.push_back(word);
+        }
+        county = row[1];
+        state = row[0];
+        date = row[4];
+        aqiString = row[5];
+        //DEBUG: test variable assignments from read
+        out << state << "," << county << "," << date << "," << aqiString << endl;
+
+        map.insert(county, state, date, stoi(aqiString));
+    }
+
+
     //variables
     int op = -1;
-    string state;
-    string county;
-    string date;
-    int aqi;
-    cout<<"Welcome, to learn more about AQI choose what you would to do"<<endl;
-    while(op != 5){
+    string userState;
+    string userCounty;
+    string userDate;
+    int userAQI;
+    //>>>>>>>>HASH MAP IMPLEMENTATION<<<<<<<
+    cout<<"Welcome, to learn more about Air Quality Index(AQI) choose what you would to do!"<<endl;
+    while(op != 6){
         cout<<"----------------------------"<<endl;
         cout<<"Operations: (enter a number)\n"<<
-            "1. Visual Local County AQI of 2023\n"<<
-            "2. Insert Data into Database\n"<<
-            "3. Delete Data into Database\n"<<
-            "4. References\n"<<
-            "5. Exit"<<endl;
+            "1. Search for local AQI based on Date\n"<<
+            "2. Graph Visualization local AQI"<<
+            "3. Insert Data into Database\n"<<
+            "4. Delete Data into Database\n"<<
+            "5. References\n"<<
+            "6. Exit"<<endl;
         cin >> op;
         //Graph Visualization
         if(op == 1){
-
             cout<<"Enter your state"<<endl;
-            cin>>state;
+            cin>>userState;
             cout<<"Enter your county"<<endl;
-            cin>>county;
+            cin>>userCounty;
             cout<<"Enter your date"<<endl;
-            cin>>date;
-            cout<<"The AQI is "<<hashMap.search(state, county, date)<<endl;
+            cin>>userCounty;
+            int foundAQI = map.search(userCounty, userState, userDate);
+            if(foundAQI==-1){
+                cout<<"Datapoint not found"<<endl;
+                continue;
+            }
+            cout<<"Local AQI is "<<foundAQI<<endl;
         }
-            //Insert Data
+        //AQI Visualization
         else if(op == 2){
+            cout<<"Enter your state"<<endl;
+            cin>>userState;
+            cout<<"Enter your county"<<endl;
+            cin>>userCounty;
+            getAQIs(map.searchByCounty(userState, userCounty));
+
+        }
+        //Insert Data
+        else if(op == 3){
             cout<<"Warning: All changes are permanent"<<endl;
             cout<<"Enter your state"<<endl;
-            cin>>state;
+            cin>>userState;
             cout<<"Enter your county"<<endl;
-            cin>>county;
+            cin>>userCounty;
             cout<<"Enter your Data (MM/DD/YYYY"<<endl;
-            cin>>date;
+            cin>>userDate;
+            cout<<"date: "<<date<<endl;
             cout<<"Enter your AQI (integer)"<<endl;
-            cin>>aqi;
-            if(hashMap.insert(county, state, date, aqi)){
+            cin>>userAQI;
+            if(map.insert(userCounty, userState, userDate, userAQI)){
                 cout<<"Data Point Inserted!"<<endl;
             }
             else{cout<<"Insertion failed"<<endl;}
         }
-            //Delete Data
-        else if(op == 3){
+        //Delete Data
+        else if(op == 4){
             cout<<"Warning: All changes are permanent"<<endl;
             cout<<"Enter your state"<<endl;
-            cin>>state;
+            cin>>userState;
             cout<<"Enter your county"<<endl;
-            cin>>county;
+            cin>>userCounty;
             cout<<"Enter your Data (MM/DD/YYYY"<<endl;
-            cin>>date;
+            cin>>userDate;
             cout<<"Enter your AQI (integer)"<<endl;
-            cin>>aqi;
-            if(hashMap.remove(county, state, date)){
+            cin>>userAQI;
+            if(map.remove(userCounty, userState, userDate)){
                 cout<<"Data Point Deleted!"<<endl;
             }
             else{cout<<"Deletion failed"<<endl;}
         }
-        else if(op == 4){
+        //Show References
+        else if(op == 5){
             cout<<"References\n"<<
                 " - https://aqs.epa.gov/aqsweb/airdata/download_files.html\n"<<
                 " - https://medium.com/@mohanakrishnakavali/about-hashmap-and-common-use-cases-d3e5134438e1\n"<<
@@ -114,6 +173,9 @@ int main(){
 
     }
     cout<<"Program exited"<<endl;
+
+    //>>>>>>>>HASH MAP IMPLEMENTATION<<<<<<<
+
     return 0;
 /*
     //DEBUG: clear test file upon start
