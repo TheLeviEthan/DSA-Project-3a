@@ -1,0 +1,5 @@
+Steps to run program 
+1. Once source code is downloaded, open the project with clion, vscode, etc. 
+2. Node.js must be installed - https://nodejs.org/en
+3. navigate to DSA-Project-3a/server/start-server.bat and click the file, required dependencies should start installing 
+4. once installed, the server should run automatically at http://localhost:3000/index.html
